@@ -63,7 +63,7 @@ fi
 if [[ $# -gt 0 && ( "$*" == *"up"* || "$*" == *"-up"* || "$*" == *"update"* || "$*" == *"--update"* ) ]]; then
   echo -e "➼ ${YELLOW}Checking For ${BLUE}Updates${NC}"
   REMOTE_FILE=$(mktemp)
-  curl -s -H "Cache-Control: no-cache" https://raw.githubusercontent.com/Azathothas/BugGPT-Tools/main/cold/cold.sh -o "$REMOTE_FILE"
+  curl -s -H "Cache-Control: no-cache" https://raw.githubusercontent.com/mux0x/cold.sh/main/cold.sh -o "$REMOTE_FILE"
   if ! diff --brief /usr/local/bin/cold "$REMOTE_FILE" >/dev/null 2>&1; then
     echo -e "➼ ${YELLOW}NEW!! Update Found! ${BLUE}Updating ..${NC}" 
     dos2unix $REMOTE_FILE > /dev/null 2>&1 
@@ -248,7 +248,7 @@ for binary in "${binaries[@]}"; do
         go install -v github.com/tomnomnom/anew@latest
         pipx install -f "git+https://github.com/s0md3v/Arjun.git" --include-deps
         go install -v github.com/lc/gau/v2/cmd/gau@latest
-        sudo wget https://raw.githubusercontent.com/Azathothas/BugGPT-Tools/main/cold/assets/fasttld -O /usr/local/bin/fasttld && sudo chmod +xwr /usr/local/bin/fasttld
+        sudo wget https://raw.githubusercontent.com/mux0x/cold.sh/main/cold/assets/fasttld -O /usr/local/bin/fasttld && sudo chmod +xwr /usr/local/bin/fasttld
         go env -w GO111MODULE="auto" ; go get -u -v github.com/tomnomnom/fff
         go env -w GO111MODULE="auto" ; go get -u -v github.com/bp0lr/fget
         go install -v github.com/c3l3si4n/godeclutter@main
@@ -287,7 +287,7 @@ for path in "${paths[@]}"; do
         cd $HOME/Tools && git clone https://github.com/gwen001/github-search.git && cd $HOME/Tools/github-search && pip3 install -r requirements.txt
         #w9w/JSA
         cd $HOME/Tools && git clone https://github.com/w9w/JSA.git && cd $HOME/Tools/JSA && pip3 install -r requirements.txt
-        wget https://raw.githubusercontent.com/Azathothas/BugGPT-Tools/main/cold/assets/JSA_automation.sh -O $HOME/Tools/JSA/automation.sh
+        wget https://raw.githubusercontent.com/mux0x/cold.sh/main/cold/assets/JSA_automation.sh -O $HOME/Tools/JSA/automation.sh
         chmod +x $HOME/Tools/JSA/automation.sh && chmod +x $HOME/Tools/JSA/automation/404_js_wayback.sh
         #xnl-h4ck3r/Urless
         cd $HOME/Tools && git clone https://github.com/xnl-h4ck3r/urless.git && cd $HOME/Tools/urless 
@@ -527,7 +527,7 @@ fi
 #Check For Update on Script end
 echo ""
 REMOTE_FILE=$(mktemp)
-curl -s -H "Cache-Control: no-cache" https://raw.githubusercontent.com/Azathothas/BugGPT-Tools/main/cold/cold.sh -o "$REMOTE_FILE"
+curl -s -H "Cache-Control: no-cache" https://raw.githubusercontent.com/mux0x/cold.sh/main/cold.sh -o "$REMOTE_FILE"
 if ! diff --brief /usr/local/bin/cold "$REMOTE_FILE" >/dev/null 2>&1; then
 echo ""
 echo -e "➼ ${YELLOW}Update Found!${NC} ${BLUE}updating ..${NC} $(cold -up)" 
