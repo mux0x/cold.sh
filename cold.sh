@@ -209,31 +209,47 @@ else
   echo -e "${YELLOW}Secrets Scanning everything in $outputDir? : ${RED}No $(echo -e "${RED}\u2717${NC}")${NC}"
 fi
 #Dependency Checks
+#Chromium webrivers for headless crawling
 if ! command -v chromium >/dev/null 2>&1; then
     echo "➼ chromium-chromedriver is not installed. Installing..."
     sudo apt-get update && sudo apt-get install chromium chromium-chromedriver chromium-common chromium-driver -y
 fi
+#dos2unix --> used on --update 
 if ! command -v dos2unix >/dev/null 2>&1; then
     echo "➼ dos2unix is not installed. Installing..."
     sudo apt-get update && sudo apt-get install dos2unix -y
 fi
+#GoLang --> => 1.20.0
 if ! command -v go &> /dev/null 2>&1; then
     echo "➼ golang is not installed. Installing..."
     cd /tmp && git clone https://github.com/udhos/update-golang  && cd /tmp/update-golang && sudo ./update-golang.sh
     source /etc/profile.d/golang_path.sh
+  else
+    GO_VERSION=$(go version | awk '{print $3}')
+  if [[ "$(printf '%s\n' "1.20.0" "$(echo "$GO_VERSION" | sed 's/go//')" | sort -V | head -n1)" != "1.20.0" ]]; then
+        echo "➼ golang version 1.20.0 or greater is not installed. Installing..."
+        cd /tmp && git clone https://github.com/udhos/update-golang  && cd /tmp/update-golang && sudo ./update-golang.sh
+        source /etc/profile.d/golang_path.sh
+  else
+        echo ""
+  fi
 fi
+#npm --> for js enum
 if ! command -v npm &> /dev/null 2>&1; then
     echo "➼ npm is not installed. Installing..."
     sudo apt-get update && sudo apt-get install npm -y
 fi
+#parallel --> run commands in parallel
 if ! command -v parallel >/dev/null 2>&1; then
     echo "➼ parallel is not installed. Installing..."
     sudo apt-get update && sudo apt-get install parallel -y
 fi
+#Python3-pip
 if ! command -v pip3 &> /dev/null; then
    echo "➼ python3-pip is not installed. Installing..." 
    sudo apt-get update && sudo apt-get install python3-pip -y
 fi
+#makes python apps global
 if ! command -v pipx &> /dev/null; then
    echo "➼ pipx is not installed. Installing..." 
    python3 -m pip install pipx
