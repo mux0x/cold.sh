@@ -11,7 +11,7 @@ Col(lect) D(ata): A Fancy Bash Wrapper around [**gau**](https://github.com/lc/ga
 ### **Installation**:
  - **Bash**: 
 ```bash
-sudo wget https://raw.githubusercontent.com/Azathothas/BugGPT-Tools/main/cold/cold.sh -O /usr/local/bin/cold && sudo chmod +xwr /usr/local/bin/cold && cold --help
+sudo wget https://raw.githubusercontent.com/mux0x/cold.sh/main/cold.sh -O /usr/local/bin/cold && sudo chmod +xwr /usr/local/bin/cold && cold --help
 ``` 
 ### Initialization:
 ```bash
